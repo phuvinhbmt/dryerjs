@@ -19,7 +19,7 @@ export type ReferencesManyConfig = {
 export function ReferencesMany(
   typeFunction: ReferencesManyConfig['typeFunction'],
   options: ReferencesManyConfig['options'],
-) {
+): PropertyDecorator {
   return (target: object, propertyKey: string | symbol) => {
     Metadata.for(target)
       .with(propertyKey)

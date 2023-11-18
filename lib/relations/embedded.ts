@@ -27,7 +27,10 @@ export type EmbeddedConfig = {
   };
 };
 
-export function Embedded(typeFunction: EmbeddedConfig['typeFunction'], options?: EmbeddedConfig['options']) {
+export function Embedded(
+  typeFunction: EmbeddedConfig['typeFunction'],
+  options?: EmbeddedConfig['options'],
+): PropertyDecorator {
   return (target: object, propertyKey: string | symbol) => {
     const subSchema = SchemaFactory.createForClass(typeFunction());
     subSchema.virtual('id').get(function () {

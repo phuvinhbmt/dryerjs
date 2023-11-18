@@ -13,7 +13,10 @@ export type HasOneConfig = {
     skipRelationCheckOnRemove?: boolean;
   };
 };
-export function HasOne(typeFunction: HasOneConfig['typeFunction'], options: HasOneConfig['options']) {
+export function HasOne(
+  typeFunction: HasOneConfig['typeFunction'],
+  options: HasOneConfig['options'],
+): PropertyDecorator {
   return (target: object, propertyKey: string | symbol) => {
     Metadata.for(target).with(propertyKey).set<HasOneConfig>(MetaKey.HasOneType, { typeFunction, options });
     if (options.allowCreateWithin) {

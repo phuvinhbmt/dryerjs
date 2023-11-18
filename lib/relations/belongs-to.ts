@@ -11,7 +11,7 @@ export type BelongsToConfig = {
 export function BelongsTo(
   typeFunction: BelongsToConfig['typeFunction'],
   options: BelongsToConfig['options'],
-) {
+): PropertyDecorator {
   return (target: object, propertyKey: string | symbol) => {
     Metadata.for(target)
       .with(propertyKey)

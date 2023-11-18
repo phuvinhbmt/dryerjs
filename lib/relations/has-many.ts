@@ -15,7 +15,10 @@ export type HasManyConfig = {
   };
 };
 
-export function HasMany(typeFunction: HasManyConfig['typeFunction'], options: HasManyConfig['options']) {
+export function HasMany(
+  typeFunction: HasManyConfig['typeFunction'],
+  options: HasManyConfig['options'],
+): PropertyDecorator {
   return (target: object, propertyKey: string | symbol) => {
     Metadata.for(target).with(propertyKey).set<HasManyConfig>(MetaKey.HasManyType, { typeFunction, options });
     if (options.allowCreateWithin) {
